@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Northwind.Wpf.View.MasterView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ViewModel="clr-namespace:Northwind.Wpf.ViewModel"
+    Height="Auto" Width="Auto">
+    
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type ViewModel:EmployeeViewModel}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding GivenName}" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding Surname}"/>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <DockPanel Grid.Row="0">
+            <Label Content="Search:"/>
+            <TextBox Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="5">
+                <TextBox.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SearchContainsNoMatch}" Value="True">
+                                <DataTrigger.Setters>
+                                    <Setter Property="TextBox.Background" Value="#68FF0000"/>
+                                    <Setter Property="TextBox.ToolTip" Value="No result found"/>
+                                </DataTrigger.Setters>
+                            </DataTrigger>
+                        </Style.Triggers>                        
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+        </DockPanel>
+        
+        <ListBox Grid.Row="1"
+                 ItemsSource="{Binding Employees}"
+                 IsSynchronizedWithCurrentItem="True"/>
+        
+        <UniformGrid Grid.Row="2" Columns="5">
+            <Button Content="Add" Command="{Binding AddCommand}"/>
+            <Button Content="Remove" Command="{Binding RemoveCommand}"/>
+            <Button Content="Save" Command="{Binding SaveCommand}"/>
+            <Button Content="&lt;" Command="{Binding PreviousCommand}"/>
+            <Button Content="&gt;" Command="{Binding NextCommand}"/>
+        </UniformGrid>
+    </Grid>
+</UserControl>

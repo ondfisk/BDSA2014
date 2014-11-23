@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Northwind.Models.Contact>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Contact</h2>
+
+@foreach (var contact in Model)
+{
+    <div class="contact">
+        <div><img src="@Url.Action("Portrait", "Contact", new { contact.Id })" alt="portrait" /></div>
+        <h3>@contact.TitleOfCourtesy @contact.FirstName @contact.LastName</h3>
+        <h4>@Html.ActionLink(contact.Title, "Details", new { id = contact.Id })</h4>
+    </div>
+}
+
