@@ -42,13 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="1_Threads1.cs" />
-    <Compile Include="3_Threads3.cs" />
-    <Compile Include="2_Threads2.cs" />
-    <Compile Include="4_Join.cs" />
-    <Compile Include="6_Deadlock.cs" />
+    <Compile Include="01_Threads.cs" />
+    <Compile Include="03_Threads.cs" />
+    <Compile Include="02_Threads.cs" />
+    <Compile Include="04_Join.cs" />
+    <Compile Include="06_Deadlock.cs" />
+    <Compile Include="08_Fail.cs" />
+    <Compile Include="09_TaskParallelLibrary.cs" />
+    <Compile Include="07_TaskParallelLibrary.cs" />
+    <Compile Include="10_ParallelLinq.cs" />
+    <Compile Include="11_ConcurrentCollections.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="5_RaceCondition.cs" />
+    <Compile Include="05_RaceCondition.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
